@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# bootstrap Files
+admin
+.bootstrap
+bootstrap
+.@popperjs
+@popperjs
+
 # C extensions
 *.so
 
