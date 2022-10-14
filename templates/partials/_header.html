@@ -1,0 +1,21 @@
+{% load static %}
+{% block content %}
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img class="logo" src="{% static 'img/logo.jpg' %}" alt="Logo da mercearia"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="text-end collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="fs-5 nav-link font-header" aria-current="page" href="#">Home</a>
+            <a class="fs-5 nav-link disabled font-header">Produtos</a>
+            <a class="fs-5 nav-link disabled font-header">Login</a>
+            <a class="fs-5 nav-link disabled font-header ">Cadastro</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+{% endblock %}

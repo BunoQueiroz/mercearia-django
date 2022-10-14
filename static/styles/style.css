@@ -1,0 +1,111 @@
+/* General */
+body {
+    background-color: #cccccc10;
+}
+
+.fixed {
+    position: fixed;
+    width: 100%;
+}
+
+.font-wine {
+    color: darkred;
+}
+
+.logo {
+    width: 5rem;
+}
+
+/* Header */
+.font-header {
+    text-transform: uppercase;
+    color: darkred !important;
+    font-weight: bold;
+}
+
+/* Main */
+.presentation {
+    background-image: url(../img/banner-supermercado.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.mask {
+    background-color: #0000001f;
+}
+
+.title {
+    text-transform: uppercase;
+}
+
+.category-table {
+    width: 25%;
+}
+
+.font-header:hover {
+    text-decoration: underline;
+}
+
+.call {
+    background: url(../img/banner-pessoaAoCelular.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.btn-call {
+    background-color: darkred !important;
+    border: 1px solid darkred !important;
+}
+
+/* Footer */
+.contact {
+    background: linear-gradient(blueviolet, rgb(189, 43, 226));
+}
+
+.localization-map {
+    width: 100%;
+}
+
+.btn-facebook {
+    background: blue!important;
+    border: none;
+}
+
+.btn-whatsapp {
+    background: green!important;
+    border: none;
+}
+
+.btn-instagram {
+    background: linear-gradient(-160deg, blue, #c00010, rgb(223, 223, 23))!important;
+    border: none;
+}
+
+.btn-twitter {
+    background: #20a0ff!important;
+    border: none;
+}
+
+/* Medias Querys */
+@media screen and (max-width:540px) {
+    .p-xs {
+        padding: 0rem !important;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .localization-map {
+        height: 20vh;
+    }
+
+    .list-link {
+        padding-bottom: 1rem;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .localization-map {
+        height: 35vh;
+    }
+}

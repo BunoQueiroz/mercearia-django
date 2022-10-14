@@ -1,0 +1,111 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% block content %}
+  <main>
+    <section class="presentation">
+      <div class="mask py-5">
+        <article class="container">
+          <h1 class="text-light display-5 fw-semibold title text-center py-3">Bem Vindo(a) ao mercadinho eleni</h1>
+          <h4 class="text-light display-6 fw-normal py-3">Somos uma mercearia disposta a oferecer aos nossos clientes um excelente serviço e entregar produtos de alta qualidade e preços 100% acecíveis</h4>
+        </article>
+      </div>
+    </section>
+    <section class="container produtos">
+      <h2 class="text-center py-3 display-6 fw-semibold">Conheça Alguns de Nossos Produtos</h2>
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th class="category-table border border-secondary text-light bg-secondary">Não Perecíveis</th>
+            <th class="category-table border border-secondary text-light bg-secondary">Enlatados</th>
+            <th class="category-table border border-secondary text-light bg-secondary">Frio</th>
+            <th class="category-table border border-secondary text-light bg-secondary">Geral</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-dark fw-bold p-xs">Arroz</td>
+            <td class="border border-dark fw-bold p-xs">Ervilha</td>
+            <td class="border border-dark fw-bold p-xs">Hambúrguer</td>
+            <td class="border border-dark fw-bold p-xs">Havaiana</td>
+          </tr>
+          <tr>
+            <td class="border border-dark fw-bold p-xs">Feijão</td>
+            <td class="border border-dark fw-bold p-xs">Feijoada</td>
+            <td class="border border-dark fw-bold p-xs">Salsicha</td>
+            <td class="border border-dark fw-bold p-xs">Vassoura</td>
+          </tr>
+          <tr>
+            <td class="border border-dark fw-bold p-xs">Sal</td>
+            <td class="border border-dark fw-bold p-xs">Sardinha</td>
+            <td class="border border-dark fw-bold p-xs">Linguiça</td>
+            <td class="border border-dark fw-bold p-xs">Shampoo</td>
+          </tr>
+          <tr>
+            <td class="border border-dark fw-bold p-xs">Farinha</td>
+            <td class="border border-dark fw-bold p-xs">Milho verde</td>
+            <td class="border border-dark fw-bold p-xs">Frango</td>
+            <td class="border border-dark fw-bold p-xs">Vinho</td>
+          </tr>
+          <tr>
+            <td class="border border-dark fw-bold p-xs">Bolacha</td>
+            <td class="border border-dark fw-bold p-xs">Almôndega</td>
+            <td class="border border-dark fw-bold p-xs">Peixe</td>
+            <td class="border border-dark fw-bold p-xs">Perfume</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="call py-5">
+      <div class="container grid">
+        <h2 class="display-6 fw-semibold pb-5 font-wine">Fique por dentro de tudo</h2>
+        <p class="fs-2 fw-semibold lh-sm py-5 col-8 col-md-6">
+          Em nosso mercearia os nossos clientes cadastrados ficam por dentro de todas as novidade e promoções. Além disso, podem fazer consultas mais específica sobre nosso produtos
+        </p>
+        <a class="col-6 col-md-4 col-lg-3 fs-4 py-1 text-uppercase btn btn-lg btn-primary btn-call" href="#">cadastre-se</a>
+      </div>
+    </section>
+    <section class="text-light py-4 contact">
+      <h2 class="fs-2 text-center text-uppercase">Contato</h2>
+      <form class="container grid">
+        <div class="col-9 mb-1">
+          <label for="InputName" class="form-label mb-0 fs-4">Nome completo</label>
+          <input type="text" class="form-control fs-5 py-0" id="InputName" required>
+        </div>
+        <div class="col-9 mb-1">
+          <label for="InputEmail" class="form-label mb-0 fs-4">Email</label>
+          <input type="email" class="form-control fs-5 py-0" id="InputEmail" required>
+        </div>
+        <div class="col-9 mb-1">
+          <label for="InputWhatsapp" class="form-label mb-0 fs-4">WhatsApp para contato</label>
+          <input type="number" class="form-control fs-5 py-0" id="InputWhatsapp" required>
+        </div>
+        <div class="col-9 mb-1">
+          <label for="InputMessage" class="form-label mb-0 fs-4">Mensagem</label>
+          <textarea class="form-control fs-5 py-0" id="InputMessage" required cols="15" rows="5" required></textarea>
+        </div>
+        <div class="mb-3 form-check d-flex">
+          <input type="checkbox" class="form-check-input align-self-center" id="checkBox">
+          <label class="ps-2 form-check-labelc fs-5" for="checkBox">Guardar dados</label>
+        </div>
+        <button type="submit" class="btn btn-primary text-uppercase col-3">Enviar</button>
+      </form>
+    </section>
+    <section class="institutional container">
+      <h2 class="text-center fs-1 m-0 py-4">Institucional</h2>
+      <address class="row text-center m-0 py-3 fs-5">
+        <div class="col-12 col-md-6 pb-3">
+          <p class="m-0">Rua João Nasciso de Oliveira, 33</p>
+          <p class="m-0">Boa Vista, Paraipaba - CE</p>
+        </div>
+        <div class="col-12 col-md-6 pb-3">
+          <a class="text-decoration-none text-dark" href="#">(99) 999999999</a><br>
+          <a href="#">email@gmail.com</a>
+        </div>
+      </address>
+    </section>
+    <section class="localization container py-3">
+        <iframe class="localization-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.9898422000856!2d-39.19241968625933!3d-3.3526250975594625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c1030060ccbb73%3A0x2477635d4fb9e53e!2sMercadinho%20Eleni!5e0!3m2!1spt-BR!2sbr!4v1662731940990!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+  </main>
+{% endblock %}  

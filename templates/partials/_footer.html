@@ -1,0 +1,39 @@
+{% block content %}
+{% load static %}
+  <footer>
+    <section class="bg-secondary networks py-3 bg-opacity-10">
+      <h2 class="fs-2 text-center pb-3 font-wine">Nossas Redes Sociais</h2>
+      <nav class="container">
+        <ul class="row m-0 p-0 justify-content-between">
+          <li class="list-group-item col-5 col-md-2 list-link">
+            <a href="" class="fs-5 d-flex text-decoration-none btn btn-facebook justify-content-center">
+                <p class="m-0 text-light">facebook</p>
+                <img src="{% static 'img/facebook.svg' %}" alt="" class="nav-icon ps-1">
+            </a>
+          </li>
+          <li class="list-group-item col-5 col-md-2 list-link">
+            <a href="" class="fs-5 d-flex text-decoration-none btn btn-whatsapp justify-content-center">
+                <p class="m-0 text-light">whatsapp</p>
+                <img src="{% static 'img/whatsapp.svg' %}" alt="" class="nav-icon ps-1">
+            </a>
+          </li>
+          <li class="list-group-item col-5 col-md-2 list-link">
+            <a href="" class="fs-5 d-flex text-decoration-none btn btn-instagram justify-content-center">
+                <p class="m-0 text-light">instagram</p>
+                <img src="{% static 'img/instagram.svg' %}" alt="" class="nav-icon ps-1">
+            </a>
+          </li>
+          <li class="list-group-item col-5 col-md-2 list-link">
+            <a href="" class="fs-5 d-flex text-decoration-none btn btn-twitter justify-content-center">
+                <p class="m-0 text-light">twitter</p>
+                <img src="{% static 'img/twitter.svg' %}" alt="" class="nav-icon ps-1">
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    <section class="py-1 copyrigth bg-dark">
+      <p class="text-light text-center fs-5 m-0">&copy; Todos os direitos reservados - 2022</p>
+    </section>
+  </footer>
+{% endblock %}
