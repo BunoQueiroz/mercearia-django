@@ -23,9 +23,13 @@ body {
     font-weight: bold;
 }
 
+.font-header:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 /* Main */
 .presentation {
-    background-image: url(../img/banner-supermercado.jpg);
+    background-image: url(../img/background-supermercado.jpg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
@@ -41,10 +45,6 @@ body {
 
 .category-table {
     width: 25%;
-}
-
-.font-header:hover {
-    text-decoration: underline;
 }
 
 .call {
