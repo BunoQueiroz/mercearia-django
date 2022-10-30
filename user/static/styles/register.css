@@ -1,0 +1,26 @@
+.register-icon {
+    width: 30%;
+}
+
+.form-register {
+    width: 50%;
+}
+
+/* Welcome */
+.welcome {
+    width: 50%;
+}
+
+.welcome-logo {
+    width: 30%;
+}
+
+@media screen and (max-width: 767px) {
+    .welcome {
+        display: none!important;
+    }
+
+    .form-register {
+        width: 100%;
+    }
+}

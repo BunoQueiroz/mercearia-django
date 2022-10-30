@@ -1,0 +1,44 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="container py-3 bg-light" id="register-section">
+    <div class="rounded d-flex justify-content-between bg-dark" id="mask">
+      <div class="rounded-start welcome text-center text-light px-5 d-flex flex-column align-items-center justify-content-evenly bg-success bg-opacity-75" id="welcome">
+        <h1 class="fw-bold">Seja Muito Bem Vindo!</h1>
+        <h2>Estamos ansiosos para que você faça parte da nossa família</h2>
+      </div>
+      <form class="rounded-end bg-primary bg-opacity-50 d-flex justify-content-center form-register" action="POST"  id="register">
+        <fieldset class="form-content d-flex p-4 rounded flex-column justify-content-center">
+          <legend class="form-item text-center d-flex justify-content-center">
+            <img src="{% static 'img/icon.jpg' %}" alt="Login icon" class="register-icon">
+          </legend>
+          <div class="form-item pb-3">
+            <label for="inputName" class="form-label text-light fw-semibold m-0">Nome</label>
+            <input type="text" name="name" class="form-control form-control--name text-light fst-italic form-input fw-semibold" id="inputName" aria-describedby="emailHelp" data-type="name" required>
+          </div>
+          <div class="form-item pb-3">
+            <label for="inputLastName" class="form-label text-light fw-semibold m-0">Sobrenome</label>
+            <input type="text" name="lastName" class="form-control form-control--name text-light fst-italic form-input fw-semibold" id="inputLastName" aria-describedby="emailHelp" data-type="lastName" required>
+          </div>
+          <div class="form-item pb-3">
+            <label for="inputEmail" class="form-label text-light fw-semibold m-0">Email</label>
+            <input type="email" name="email" class="form-control text-light fst-italic form-input fw-semibold" id="inputEmail" aria-describedby="emailHelp" data-type="email" required>
+          </div>
+          <div class="form-item pb-3">
+            <label for="inputPassword" class="form-label text-light fw-semibold m-0">Senha</label>
+            <input type="password" name="password" class="form-control text-light fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
+          </div>
+          <div class="mb-3 form-check d-flex justify-content-between">
+            <div>
+              <input type="checkbox" class="form-check-input" id="checkBox">
+              <label class="form-check-label text-light fw-semibold" for="checkBox">Salvar dados</label>
+            </div>
+            <a class="text-light" href="#">Já possui conta?</a>
+          </div>
+          <button type="submit" class="fw-semibold btn btn-primary mb-2 align-self-center form-btn" id="button-form">Cadastrar-me</button>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+{% endblock %}
