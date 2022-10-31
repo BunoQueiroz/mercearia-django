@@ -9,10 +9,10 @@
       </button>
       <div class="text-end collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="fs-5 nav-link font-header" aria-current="page" href="#">Home</a>
+          <a class="fs-5 nav-link font-header" aria-current="page" href="{% url 'index' %}">Home</a>
           <a class="fs-5 nav-link disabled font-header">Produtos</a>
-          <a class="fs-5 nav-link disabled font-header">Login</a>
-          <a class="fs-5 nav-link disabled font-header ">Cadastro</a>
+          <a class="fs-5 nav-link font-header" href="{% url 'login' %}">Login</a>
+          <a class="fs-5 nav-link font-header " href="{% url 'register' %}">Cadastro</a>
           <a class="fs-5 nav-link font-header" data-bs-toggle="modal" data-bs-target="#modal">Contato</a>
         </div>
       </div>
