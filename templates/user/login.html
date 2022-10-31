@@ -1,6 +1,8 @@
 {% extends 'partials/_base.html' %}
 {% load static %}
 {% block content %}
+
+{% include 'partials/_message.html' %}
 <section class="container login py-5 bg-light mb-4" id="login">
     <form class="d-flex justify-content-center form mb-3" action="POST">
         <div class="mask bg-dark rounded-2">
@@ -25,7 +27,7 @@
                 <button type="submit" class="fw-semibold btn btn-primary mb-2 align-self-center form-btn">Logar</button>
                 <div class="d-flex justify-content-around pt-4">
                     <a class="text-light" href="#">Esqueceu sua senha?</a>
-                    <a class="text-light" href="#">Ainda não possui conta?</a>
+                    <a class="text-light" href="{% url 'register' %}">Ainda não possui conta?</a>
                 </div>
             </fieldset>
         </div>

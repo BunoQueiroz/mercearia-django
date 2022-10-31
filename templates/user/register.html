@@ -8,7 +8,7 @@
         <h1 class="fw-bold">Seja Muito Bem Vindo!</h1>
         <h2>Estamos ansiosos para que você faça parte da nossa família</h2>
       </div>
-      <form class="rounded-end bg-primary bg-opacity-50 d-flex justify-content-center form-register" action="POST"  id="register">
+      <form class="rounded-end bg-primary bg-opacity-50 d-flex justify-content-center form-register" action="{% url 'register_user' %}" method="POST"  id="register">{% csrf_token %}
         <fieldset class="form-content d-flex p-4 rounded flex-column justify-content-center">
           <legend class="form-item text-center d-flex justify-content-center">
             <img src="{% static 'img/icon.jpg' %}" alt="Login icon" class="register-icon">
