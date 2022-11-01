@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+{% include 'partials/_message.html' %}
 <section class="container py-3 bg-light" id="register-section">
     <div class="rounded d-flex justify-content-between bg-dark" id="mask">
       <div class="rounded-start welcome text-center text-light px-5 d-flex flex-column align-items-center justify-content-evenly bg-success bg-opacity-75" id="welcome">
@@ -28,6 +29,10 @@
           <div class="form-item pb-3">
             <label for="inputPassword" class="form-label text-light fw-semibold m-0">Senha</label>
             <input type="password" name="password" class="form-control text-light fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
+          </div>
+          <div class="form-item pb-3">
+            <label for="inputPassword" class="form-label text-light fw-semibold m-0">Confirmar Senha</label>
+            <input type="password" name="confirmPassword" class="form-control text-light fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
           </div>
           <div class="mb-3 form-check d-flex justify-content-between">
             <div>
