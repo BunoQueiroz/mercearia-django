@@ -21,22 +21,18 @@ def register_user(request):
         password = request.POST['password']
         confirm_password = request.POST['confirmPassword']
 
-        current_page = 'register'
 
         if( data_invalid() ):
-            messages_list = []
+            current_page = 'register'
             if User.objects.filter(email=email).exists():
-                message = 'Este Email ja está cadastrado em nosso sistema'
-                messages.error(request, message)
+                messages.error(request, 'Este Email ja está cadastrado em nosso sistema')
 
             if len(str(password)) < 8:
-                message = 'A sua senha está muito fraca'
-                messages.error(request, message)
+                messages.error(request, 'A sua senha está muito fraca')
             
             if password != confirm_password:
-                message = 'As senhas informadas estavam diferente'
-                messages.error(request, message)
-            
+                messages.error(request, 'As senhas informadas estavam diferente')
+            messages.error(request, 'Não deu certo')
             return redirect(current_page)
 
         else:
