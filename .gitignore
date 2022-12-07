@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Dockerfile
+*.Dockerfile
+Dockerfile
+*.dockerfile
+dockerfile
+
 # bootstrap Files
 admin
 .bootstrap
