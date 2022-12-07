@@ -1,5 +1,9 @@
 {% extends 'partials/_base.html' %}
 {% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+{% endblock link %}
+{% block title %}Login{% endblock title %}
 {% block content %}
 
 {% include 'partials/_message.html' %}

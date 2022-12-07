@@ -1,5 +1,9 @@
 {% extends 'partials/_base.html' %}
 {% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'styles/register.css' %}">
+{% endblock link %}
+{% block title %}Cadastro{% endblock title %}
 {% block content %}
 
 {% include 'partials/_message.html' %}
@@ -16,23 +20,23 @@
           </legend>
           <div class="form-item pb-3">
             <label for="inputName" class="form-label text-light fw-semibold m-0">Nome</label>
-            <input type="text" name="name" class="form-control form-control--name text-light fst-italic form-input fw-semibold" id="inputName" aria-describedby="emailHelp" data-type="name" required>
+            <input type="text" name="name" class="form-control form-control--name fst-italic form-input fw-semibold" id="inputName" aria-describedby="emailHelp" data-type="name" required>
           </div>
           <div class="form-item pb-3">
             <label for="inputLastName" class="form-label text-light fw-semibold m-0">Sobrenome</label>
-            <input type="text" name="lastName" class="form-control form-control--name text-light fst-italic form-input fw-semibold" id="inputLastName" aria-describedby="emailHelp" data-type="lastName" required>
+            <input type="text" name="lastName" class="form-control form-control--name fst-italic form-input fw-semibold" id="inputLastName" aria-describedby="emailHelp" data-type="lastName" required>
           </div>
           <div class="form-item pb-3">
             <label for="inputEmail" class="form-label text-light fw-semibold m-0">Email</label>
-            <input type="email" name="email" class="form-control text-light fst-italic form-input fw-semibold" id="inputEmail" aria-describedby="emailHelp" data-type="email" required>
+            <input type="email" name="email" class="form-control fst-italic form-input fw-semibold" id="inputEmail" aria-describedby="emailHelp" data-type="email" required>
           </div>
           <div class="form-item pb-3">
             <label for="inputPassword" class="form-label text-light fw-semibold m-0">Senha</label>
-            <input type="password" name="password" class="form-control text-light fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
+            <input type="password" name="password" class="form-control fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
           </div>
           <div class="form-item pb-3">
             <label for="inputPassword" class="form-label text-light fw-semibold m-0">Confirmar Senha</label>
-            <input type="password" name="confirmPassword" class="form-control text-light fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
+            <input type="password" name="confirmPassword" class="form-control fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
           </div>
           <div class="mb-3 form-check d-flex justify-content-between">
             <div>
@@ -45,5 +49,5 @@
         </fieldset>
       </form>
     </div>
-  </section>
+</section>
 {% endblock %}
