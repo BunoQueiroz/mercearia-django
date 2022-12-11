@@ -1,6 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
-import os
+import os, sys
 from django.contrib.messages import constants as messages
 
 load_dotenv()
@@ -117,8 +117,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = 'static'
 STATICFILES_DIRS = [
-    'produtos/static',
-    'user/static',
+    os.path.join('apps/produtos/static'),
+    os.path.join('apps/user/static'),
 ]
 
 # Default primary key field type
@@ -131,3 +131,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success',
 }
+
+# Project Root
+PROJECT_ROOT = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(PROJECT_ROOT, '../apps/'))
