@@ -1,9 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from django.contrib import messages
-
-def login(request):
-    return render(request, 'user/login.html')
+from django.contrib.auth.models import User
 
 def register(request):
     return render(request, 'user/register.html')
