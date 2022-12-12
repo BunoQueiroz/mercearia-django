@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = []
 
@@ -117,7 +117,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = 'static'
 STATICFILES_DIRS = [
-    os.path.join('apps/produtos/static'),
+    os.path.join('apps/products/static'),
     os.path.join('apps/user/static'),
 ]
 
