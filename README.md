@@ -9,3 +9,4 @@
 # Funcionalidades
 * Renderização de páginas web
 * Sistema de mensagens
+* Cadastro de usuários no banco de dados
