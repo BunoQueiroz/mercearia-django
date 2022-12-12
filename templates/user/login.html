@@ -8,7 +8,7 @@
 
 {% include 'partials/_message.html' %}
 <section class="container login py-5 bg-light mb-4" id="login">
-    <form class="d-flex justify-content-center form mb-3" action="POST">
+    <form class="d-flex justify-content-center form mb-3" method="POST" action="{% url 'login_user' %}">{% csrf_token %}
         <div class="mask bg-dark rounded-2">
             <fieldset class="rounded-2 text-light form-content d-flex bg-primary bg-opacity-25 p-4 rounded flex-column justify-content-center">
                 <legend class="form-item text-center d-flex justify-content-center">
@@ -16,11 +16,11 @@
                 </legend>
                 <div class="form-item pb-3">
                     <label for="inputEmail" class="form-label fw-semibold m-0">Email</label>
-                    <input type="email" class="form-control text-light fst-italic form-input fw-semibold" id="inputEmail" data-type="email" required>
+                    <input type="email" class="form-control text-light fst-italic form-input fw-semibold" id="inputEmail" data-type="email" name="email" required>
                 </div>
                 <div class="form-item pb-3">
                     <label for="inputPassword" class="form-label fw-semibold m-0">Senha</label>
-                    <input type="password" class="form-control text-light fst-italic form-input fw-semibold" id="inputPassword" data-type="password" required>
+                    <input type="password" class="form-control text-light fst-italic form-input fw-semibold" id="inputPassword" data-type="password" name="password" required>
                 </div>
                 <div class="mb-3 form-check d-flex justify-content-between">
                     <div>
