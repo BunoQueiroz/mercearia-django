@@ -8,13 +8,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="text-end collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        {% if request.user.is_authenticated %}
+          {% include 'partials/_header_user_logged.html' %}
+        {% else %}
         <div class="navbar-nav">
           <a class="fs-5 nav-link font-header" aria-current="page" href="{% url 'home' %}">Home</a>
           <a class="fs-5 nav-link disabled font-header">Produtos</a>
-          <a class="fs-5 nav-link font-header" href="{% url 'login' %}">Login</a>
+          <a class="fs-5 nav-link font-header" href="{% url 'login' %}">Entrar</a>
           <a class="fs-5 nav-link font-header " href="{% url 'register' %}">Cadastro</a>
           <a class="fs-5 nav-link font-header" data-bs-toggle="modal" data-bs-target="#modal">Contato</a>
         </div>
+        {% endif %}
       </div>
     </div>
   </nav>
