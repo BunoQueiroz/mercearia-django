@@ -10,3 +10,4 @@
 * Renderização de páginas web
 * Sistema de mensagens
 * Cadastro de usuários no banco de dados
+* Autenticação e login de usuário
