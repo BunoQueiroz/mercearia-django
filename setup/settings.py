@@ -132,6 +132,10 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success',
 }
 
+# Media files
+MEDIA_ROOT = 'media'
+MEDIA_URL = 'media/'
+
 # Project Root
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, '../apps/'))
