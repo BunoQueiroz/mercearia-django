@@ -20,7 +20,7 @@ def register_user(request):
             return redirect(current_page)
 
         else:
-            user = User.objects.create_user(username=email, first_name=first_name, last_name=last_name, email=email, password=password, is_superuser=False)
+            User.objects.create_user(username=email, first_name=first_name, last_name=last_name, email=email, password=password, is_superuser=False)
             messages.success(request, 'Cadastro realizado com sucesso')
 
             return redirect('login')
