@@ -1,0 +1,25 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'styles/product.css' %}">
+{% endblock link %}
+{% block title %}Pesquisa{% endblock title %}
+{% block content %}
+{% include 'partials/_message.html' %}
+{% if request.user.is_authenticated %}
+<section class="container py-4">
+    <article class="row d-flex">
+        {% for product in products %}
+        <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xxl-3">
+            <img src="{{product.image.url}}" class="align-self-center image-card" alt="product.name">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">{{product.name}}</a>
+                <p class="card-text">{{product.descripption}}</p>
+                <h5 class="card-title text-end">R$ {{product.price}}</h5>
+            </div>
+        </div>
+        {% endfor %}
+    </article>
+</section>
+{% endif %}
+{% endblock content %}
