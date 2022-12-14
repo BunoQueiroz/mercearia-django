@@ -8,6 +8,7 @@ __pycache__/
 *.JPEG
 *.png
 *.svg
+*.jfif
 
 # Dockerfile
 *.Dockerfile
