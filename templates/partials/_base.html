@@ -16,7 +16,9 @@
 </head>
 <body>
     {% include 'partials/_header.html' %}
-    {% block content %}{% endblock %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
     {% include 'partials/_footer.html' %}
 </body>
 <script src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
