@@ -9,3 +9,6 @@ class Product(models.Model):
     price = models.FloatField()
     category = models.CharField(max_length=20)
     publicated = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return self.name
