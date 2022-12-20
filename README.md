@@ -11,6 +11,7 @@
 * Sistema de mensagens
 * Cadastro de usuários no banco de dados
 * Autenticação e login de usuário
+* Dashboard para clientes logados
 
 # Para Utilizar o projeto em seu computador realize os seguintes comandos:
 LEMBRE-SE:
