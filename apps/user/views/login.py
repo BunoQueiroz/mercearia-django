@@ -23,3 +23,4 @@ def login_user(request):
             return redirect('login')
         messages.error(request, 'Email não cadastrado')
         return redirect('login')
+    return redirect('login')
