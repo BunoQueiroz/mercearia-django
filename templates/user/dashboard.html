@@ -1,0 +1,27 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'styles/product.css' %}">
+{% endblock link %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="container text-center fw-semibold">
+    <h3 class="text-secondary">Olá, {{ request.user.first_name }}</h3>
+</div>
+<section class="container py-4">
+    <article class="row m-0">
+        {% for product in products %}
+        <div class="card col-11 col-sm-4 col-md-4 my-1 col-lg-4 col-xxl-4 p-0">
+            <img src="{{product.image.url}}" class="align-self-center image-product" alt="product.name">
+            <div class="card-body pb-0 px-2">
+                <a href="#" class="btn btn-primary">{{product.name}}</a>
+                <p class="card-text">{{product.description}}</p>
+                <h5 class="card-title text-end">R$ {{product.price}}</h5>
+            </div>
+        </div>
+        {% endfor %}
+    </article>
+</section>
+{% endif %}
+{% endblock content %}
