@@ -18,7 +18,7 @@ def login_user(request):
             if user is not None:
                 auth.login(request, user)
                 messages.success(request, 'Login realizado com sucesso')
-                return redirect('home')
+                return redirect('dashboard')
             messages.error(request, 'Algo deu errado')
             return redirect('login')
         messages.error(request, 'Email não cadastrado')
