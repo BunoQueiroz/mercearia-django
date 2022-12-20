@@ -10,7 +10,7 @@ class PurchaseAdmin(admin.ModelAdmin):
     list_display = ('account', 'items', 'amount', 'hour')
     list_display_links = ('items',)
     list_per_page = 10
-
+    list_filter = ('account',)
 
 admin.site.register(Client, ClientAdmin)
 admin.site.register(Purchase, PurchaseAdmin)
