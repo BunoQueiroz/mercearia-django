@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Settings VSCode
+.vscode
+
 # Images
 *.jpg
 *.JPEG
