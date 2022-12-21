@@ -8,9 +8,9 @@
     {% include 'partials/_message.html' %}
     <div class="container my-3">
       <form action="{% url 'update_profile' %}" class="formulario mt-4" method="POST" enctype="multipart/form-data">{% csrf_token %}
-        {% if user.img %}
+        {% if client.image %}
           <figure class="d-flex justify-content-center">
-              <img class="align-self-center rounded-5 image-user" src="{{ user.img.url }}" alt="Icone de Usuário">
+              <img class="align-self-center rounded-5 image-user" src="{{ client.image.url }}" alt="Icone de Usuário">
           </figure>
         {% else %}
           <figure class="d-flex justify-content-center">
@@ -25,21 +25,21 @@
         <div class="row mb-3">
             <div class="col">
                 <label for="email" class="form-label fw-semibold fs-5">Seu Nome</label>
-                <input type="text" class="form-control" placeholder="Nome" name="firstName" value="{{ user.first_name }}" required>
+                <input type="text" class="form-control fw-semibold" placeholder="Nome" name="firstName" value="{{ client.first_name }}" required>
             </div>
             <div class="col">
                 <label for="email" class="form-label fw-semibold fs-5">Seu Sobrenome</label>
-                <input type="text" class="form-control" placeholder="Sobrenome" name="lastName" value="{{ user.last_name }}" required>
+                <input type="text" class="form-control fw-semibold" placeholder="Sobrenome" name="lastName" value="{{ client.last_name }}" required>
             </div>
         </div>
         <div class="row mb-3">
           <div class="col">
               <label for="username" class="form-label fw-semibold fs-5">Nome de usuário</label>
-              <input type="text" class="form-control fw-semibold" placeholder="Seu nome de usuário" name="username" value="{{ user.username }}" required>
+              <input type="text" class="form-control fw-semibold" placeholder="Seu nome de usuário" name="username" value="{{ client.username }}" required>
           </div>
           <div class="col">
               <label for="email" class="form-label fw-semibold fs-5">Email</label>
-              <input type="email" class="form-control fw-semibold" id="email" placeholder="Seu email" name="email" value="{{ user.email }}" readonly>
+              <input type="email" class="form-control fw-semibold" id="email" placeholder="Seu email" name="email" value="{{ client.email }}" readonly>
           </div>
         </div>
         <button type="submit" class="btn btn-success btn-lg">Salvar</button>
