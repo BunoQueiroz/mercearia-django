@@ -1,17 +1,6 @@
 from django.shortcuts import render, redirect
-from products.models import Product, Category
+from products.models import Product
 from django.contrib import messages
-
-def all_products(request):
-    products = Product.objects.filter(publicated=True)
-    categorys = Category.objects.all()
-    context = {
-        'products': products,
-        'categorys': categorys
-    }
-    for product in products:
-        print(product.category)
-    return render(request, 'products/all_products.html', context)
 
 def search(request):
     if 'search' in request.GET:
