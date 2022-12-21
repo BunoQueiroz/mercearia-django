@@ -16,10 +16,15 @@ def update_profile(request):
             img = request.FILES['img']
             client.image = img # type: ignore
 
-        client.first_name = request.POST.get('firstName')
-        client.last_name = request.POST.get('lastName')
-        client.email = request.POST.get('email')
-        client.username = request.POST.get('username')
+        first_name_serialized = request.POST.get('firstName').strip()
+        last_name_serialized = request.POST.get('lastName').strip()
+        email_serialized = request.POST.get('email').strip()
+        username_serialized = request.POST.get('username').strip()
+
+        client.first_name = first_name_serialized
+        client.last_name = last_name_serialized
+        client.email = email_serialized
+        client.username = username_serialized
 
         try:
             client.save()
