@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product
+from .models import *
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'publicated', 'category')
@@ -9,3 +9,4 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('name', 'category')
 
 admin.site.register(Product,ProductAdmin)
+admin.site.register(Category)
