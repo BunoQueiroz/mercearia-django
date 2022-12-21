@@ -1,0 +1,28 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'styles/product.css' %}">
+{% endblock link %}
+{% block title %}Pesquisa{% endblock title %}
+{% block content %}
+{% include 'partials/_message.html' %}
+<section class="container py-4">
+    {% for category in categorys %}
+    <h3 class="text-primary mt-3 mb-0 pb-0">{{ category }}</h3>
+    <article class="row m-0">
+        {% for product in products %}
+            {% if product.category == category %}
+                <div class="card col-11 col-sm-4 col-md-4 my-1 col-lg-4 col-xxl-4 p-0">
+                    <img src="{{ product.image.url }}" class="align-self-center image-product" alt="product.name">
+                    <div class="card-body pb-0 px-2">
+                        <a href="#" class="btn btn-primary">{{ product.name }}</a>
+                        <p class="card-text">{{ product.description }}</p>
+                        <h5 class="card-title text-end">R$ {{ product.price }}</h5>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </article>
+    {% endfor %}
+</section>
+{% endblock content %}
