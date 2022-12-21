@@ -12,6 +12,8 @@
 * Cadastro de usuários no banco de dados
 * Autenticação e login de usuário
 * Dashboard para clientes logados
+* Atualização de dados dos clientes
+* Página para exibição dos produtos conforme sua categoria
 
 # Para Utilizar o projeto em seu computador realize os seguintes comandos:
 LEMBRE-SE:
