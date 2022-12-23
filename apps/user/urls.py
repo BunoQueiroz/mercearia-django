@@ -10,4 +10,5 @@ urlpatterns = [
     path('dashboard', dashboard, name='dashboard'),
     path('my_profile', profile, name='profile'),
     path('update_profile', update_profile, name='update_profile'),
+    path('my_account', my_account, name='my_account'),
 ]
