@@ -17,17 +17,19 @@
                 <th class="text-center" scope="col">Preço total</th>
             </tr>
         </thead>
-        <tbody>
-            {% for purchase in purchases %}
-            <tr>
-                <th class="text-center" scope="row">{{ purchase.items }}</th>
-                <td class="text-center">{{ purchase.amount }}</td>
-                <td class="text-center">{{ purchase.hour }}</td>
-                <td class="text-center">{{ purchase.items.price }}</td>
-                <td class="text-center">{{ purchase.total }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+        {% if purchases %}
+            <tbody>
+                {% for purchase in purchases %}
+                <tr>
+                    <th class="text-center" scope="row">{{ purchase.items }}</th>
+                    <td class="text-center">{{ purchase.amount }}</td>
+                    <td class="text-center">{{ purchase.hour }}</td>
+                    <td class="text-center">{{ purchase.items.price }}</td>
+                    <td class="text-center">{{ purchase.total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        {% endif %}
     </table>
 </section>
 {% endblock content %}
