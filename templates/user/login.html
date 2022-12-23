@@ -6,7 +6,6 @@
 {% block title %}Login{% endblock title %}
 {% block content %}
 
-{% include 'partials/_message.html' %}
 <section class="container login py-5 bg-light mb-4" id="login">
     <form class="d-flex justify-content-center form mb-3" method="POST" action="{% url 'login_user' %}">{% csrf_token %}
         <div class="mask bg-dark rounded-2">

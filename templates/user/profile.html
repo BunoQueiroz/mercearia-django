@@ -5,7 +5,6 @@
 {% endblock link %}
 {% block title %}Meu perfil{% endblock title %}
 {% block content %}
-    {% include 'partials/_message.html' %}
     <div class="container my-3">
       <form action="{% url 'update_profile' %}" class="formulario mt-4" method="POST" enctype="multipart/form-data">{% csrf_token %}
         {% if client.image %}
