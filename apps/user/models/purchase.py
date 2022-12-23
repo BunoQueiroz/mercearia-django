@@ -12,3 +12,7 @@ class Purchase(models.Model):
     def __str__(self) -> str:
         items_and_amount = f'{self.items} - {self.amount}'
         return items_and_amount
+
+    def total(self):
+        price_times_amount = self.items.price*self.amount
+        return price_times_amount
