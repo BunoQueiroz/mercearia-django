@@ -14,13 +14,22 @@ def login_user(request):
 
         if user_data.filter(email=email).exists():
             username = user_data.get(email=email)
-            user = auth.authenticate(username=username,password=password)
+            user = auth.authenticate(username=username, password=password)
             if user is not None:
-                auth.login(request, user)
-                messages.success(request, 'Login realizado com sucesso')
-                return redirect('dashboard')
-            messages.error(request, 'Algo deu errado')
-            return redirect('login')
-        messages.error(request, 'Email não cadastrado')
-        return redirect('login')
+                return login_client(request, user)
+            return fail_login(request)
+        return email_not_found(request)
     return redirect('login')
+
+def email_not_found(request):
+    messages.error(request, 'Email não cadastrado')
+    return redirect('login')
+
+def fail_login(request):
+    messages.error(request, 'Credenciais não reconhecidas')
+    return redirect('login')
+
+def login_client(request, client):
+    auth.login(request, client)
+    messages.success(request, 'Login realizado com sucesso')
+    return redirect('dashboard')
