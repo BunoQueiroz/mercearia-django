@@ -41,7 +41,9 @@
               <input type="email" class="form-control fw-semibold" id="email" placeholder="Seu email" name="email" value="{{ client.email }}" readonly>
           </div>
         </div>
+        <a type="button" class="fs-5 nav-link my-3 text-secondary fw-semibold" data-bs-toggle="modal" data-bs-target="#changePassword">Alterar senha</a>
         <button type="submit" class="btn btn-success btn-lg">Salvar</button>
     </form>
   </div>
+  {% include 'user/change_password.html' %}
 {% endblock content %}
