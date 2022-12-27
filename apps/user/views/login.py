@@ -10,14 +10,12 @@ def login_user(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user_data = User.objects
+        users_data = User.objects
 
-        if user_data.filter(email=email).exists():
-            username = user_data.get(email=email)
+        if users_data.filter(email=email).exists():
+            username = users_data.get(email=email)
             user = auth.authenticate(username=username, password=password)
-            if user is not None:
-                return login_client(request, user)
-            return fail_login(request)
+            return login_client_or_404(request, user)
         return email_not_found(request)
     return redirect('login')
 
@@ -33,3 +31,8 @@ def login_client(request, client):
     auth.login(request, client)
     messages.success(request, 'Login realizado com sucesso')
     return redirect('dashboard')
+
+def login_client_or_404(request, user):
+    if user is not None:
+        return login_client(request, user)
+    return fail_login(request)

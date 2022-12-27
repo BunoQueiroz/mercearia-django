@@ -14,17 +14,19 @@ def set_password_client(request):
         
         client = Client.objects.filter(username=request.user.username).get()
         user = authenticate(username=client.username, password=current_password)
-        if user is not None:
-            client.set_password(str(new_password))
-            client.save()
-            return success_set_password(request)
-
-        return fail_set_password(request)
+        set_new_password_or_404(request, user, client, new_password)
     return redirect('profile')
 
 def different_passwords(request):
     messages.error(request, 'Por favor revise sua nova senha')
     return redirect('profile')
+
+def set_new_password_or_404(request, user, client, new_password):
+    if user is not None:
+        client.set_password(str(new_password))
+        client.save()
+        return success_set_password(request)
+    return fail_set_password(request)
 
 def success_set_password(request):
     messages.success(request, 'Senha alterada com sucesso')
