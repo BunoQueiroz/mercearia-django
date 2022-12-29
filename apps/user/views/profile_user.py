@@ -12,33 +12,17 @@ def profile(request):
 def update_profile(request):
     if request.method == 'POST' and request.user.is_authenticated:
         client = get_client(request)
-        if 'img' in request.FILES:
-            set_image_client(request, client)
-
-        client.first_name = first_name_serialized(request)
-        client.last_name = last_name_serialized(request)
-        client.email = email_serialized(request)
-        client.username = username_serialized(request)
-            
+        set_all_fields_client(request, client)    
         save_client_or_404(request, client)
     return redirect('profile')
 
-
-def first_name_serialized(request):
-    return request.POST.get('firstName').strip()
-
-def last_name_serialized(request):
-    return request.POST.get('lastName').strip()
-
-def email_serialized(request):
-    return request.POST.get('email').strip()
-
-def username_serialized(request):
-    return request.POST.get('username').strip()
+def get_field_serialized(request, field):
+    return request.POST.get(field).strip()
 
 def set_image_client(request, client):
-    img = request.FILES['img']
-    client.image = img # type: ignore
+    if 'img' in request.FILES:
+        img = request.FILES['img']
+        client.image = img # type: ignore
 
 def get_client(request):
     possible_client = request.user.username
@@ -56,3 +40,10 @@ def save_client_or_404(request, client):
 def success_update_client(request,):
     messages.success(request, 'Dados alterados com sucesso')
     return redirect('profile')
+
+def set_all_fields_client(request, client):
+    set_image_client(request, client)
+    client.first_name = get_field_serialized(request, 'firstName')
+    client.last_name = get_field_serialized(request, 'lastName')
+    client.email = get_field_serialized(request, 'email')
+    client.username = get_field_serialized(request, 'username')

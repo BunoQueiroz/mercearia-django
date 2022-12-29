@@ -4,13 +4,35 @@ from django.contrib import messages
 
 def my_account(request):
     if request.user.is_authenticated:
-        client = request.user
-        account = Account.objects.filter(client=client).get()
-        client_purchase = Purchase.objects.filter(account=account)
-        if account:
-            if not client_purchase:
-                messages.info(request, 'Você ainda não realizou nenhuma compra conosco')
-            context = {'purchases': client_purchase}
-            return render(request, 'user/my_account.html', context)
-        return redirect('dashboard')
+        return my_account_or_404(request)
     return redirect('dashboard')
+
+def get_account_or_404(request):
+    client = request.user
+    account = Account.objects.filter(client=client)
+    if account.exists():
+        return account.get()
+    return None
+
+def get_purchase_or_404(account):
+    client_purchase = Purchase.objects.filter(account=account)
+    if not client_purchase:
+        return None
+    return client_purchase
+
+def render_client_purchase(request, client_purchase):
+    if client_purchase is None:
+        return message_info_and_redirect(request, 'dashboard', 'Você ainda não realizou compra conosco')
+    context = {'purchases': client_purchase}
+    return render(request, 'user/my_account.html', context)
+
+def my_account_or_404(request):
+    account = get_account_or_404(request)
+    if account:
+        client_purchase = get_purchase_or_404(account)
+        return render_client_purchase(request, client_purchase)
+    return message_info_and_redirect(request, 'dashboard', 'Você ainda não possui conta')
+
+def message_info_and_redirect(request, to_url, message):
+    messages.info(request, message)
+    return redirect(to_url)
