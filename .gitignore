@@ -14,6 +14,8 @@ __pycache__/
 *.jfif
 
 # Dockerfile
+*.yml
+.yml
 *.Dockerfile
 Dockerfile
 *.dockerfile
