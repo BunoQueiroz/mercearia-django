@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from user.models import Client
-from .utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized
+from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized
 
 def profile(request):
     if request.user.is_authenticated:

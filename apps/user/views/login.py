@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
-from .utils import message_error_and_redirect, message_success_and_redirect
+from core.views.utils import message_error_and_redirect, message_success_and_redirect
 
 def login(request):
     return render(request, 'user/login.html')

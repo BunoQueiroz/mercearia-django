@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from user.models import Purchase, Account
-from .utils import message_info_and_redirect
+from core.views.utils import message_info_and_redirect
 
 def my_account(request):
     if request.user.is_authenticated:

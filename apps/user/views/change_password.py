@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from user.models import Client
 from django.contrib.auth import authenticate
-from .utils import message_error_and_redirect, message_success_and_redirect
+from core.views.utils import message_error_and_redirect, message_success_and_redirect
 
 def set_password_client(request):
     if request.method == 'POST':

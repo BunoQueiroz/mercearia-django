@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .utils import message_success_and_redirect, message_error_and_redirect, get_field_serialized
+from core.views.utils import message_success_and_redirect, message_error_and_redirect, get_field_serialized
 from django.contrib.auth.models import User
 from user.models import Client
 
