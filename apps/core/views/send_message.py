@@ -1,12 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from user.views.profile_user import get_field_serialized
 from django.core.mail import send_mail
 from django.contrib import messages
-
-def home(request):
-    if request.user.is_authenticated:
-        return redirect('dashboard')
-    return render(request, 'core/index.html')
 
 def send_by_email(request):
     if request.method == "POST":
