@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from user.models import Purchase, Account
-from django.contrib import messages
+from .utils import message_info_and_redirect
 
 def my_account(request):
     if request.user.is_authenticated:
@@ -22,7 +22,7 @@ def get_purchase_or_404(account):
 
 def render_client_purchase(request, client_purchase):
     if client_purchase is None:
-        return message_info_and_redirect(request, 'dashboard', 'Você ainda não realizou compra conosco')
+        return message_info_and_redirect(request, 'Você ainda não realizou compra conosco', 'dashboard')
     total = final_value(client_purchase)
     context = {'purchases': client_purchase, 'total': total}
     return render(request, 'user/my_account.html', context)
@@ -32,11 +32,7 @@ def my_account_or_404(request):
     if account:
         client_purchase = get_purchase_or_404(account)
         return render_client_purchase(request, client_purchase)
-    return message_info_and_redirect(request, 'dashboard', 'Você ainda não possui conta')
-
-def message_info_and_redirect(request, to_url, message):
-    messages.info(request, message)
-    return redirect(to_url)
+    return message_info_and_redirect(request, 'Você ainda não possui conta', 'dashboard')
 
 def final_value(client_purchase):
     result = 0

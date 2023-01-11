@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from user.models import Client
-from django.contrib import messages
+from .utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized
 
 def profile(request):
     if request.user.is_authenticated:
@@ -16,9 +16,6 @@ def update_profile(request):
         save_client_or_404(request, client)
     return redirect('profile')
 
-def get_field_serialized(request, field):
-    return request.POST.get(field).strip()
-
 def set_image_client(request, client):
     if 'img' in request.FILES:
         img = request.FILES['img']
@@ -33,13 +30,8 @@ def save_client_or_404(request, client):
     try:
         client.save()
     except:
-        messages.error(request, 'Usuário ou Email Inválido')
-        return redirect('profile')
-    success_update_client(request)
-
-def success_update_client(request,):
-    messages.success(request, 'Dados alterados com sucesso')
-    return redirect('profile')
+        return message_error_and_redirect(request, 'Usuário ou Email Inválido', 'profile')
+    message_success_and_redirect(request, 'Dados alterados com sucesso', 'profile')
 
 def set_all_fields_client(request, client):
     set_image_client(request, client)
