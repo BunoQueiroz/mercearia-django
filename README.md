@@ -16,6 +16,7 @@
 * Página para exibição dos produtos conforme sua categoria
 * Mostrar detalhes de cada compra dos clientes
 * Alteração de senha dos clientes
+* Envio de email
 
 # Para Utilizar o projeto em seu computador realize os seguintes comandos:
 LEMBRE-SE:
