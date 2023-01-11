@@ -1,20 +1,11 @@
-from django.shortcuts import redirect
 from user.views.profile_user import get_field_serialized
 from django.core.mail import send_mail
-from django.contrib import messages
+from .utils import message_error_and_redirect, message_success_and_redirect
 
 def send_by_email(request):
     if request.method == "POST":
         return try_to_send_message(request)
-    return message_error_and_redirect(request, 'Algo deu errado, tente novamente em alguns minutos')
-
-def message_error_and_redirect(request, message):
-    messages.error(request, message)
-    return redirect('home')
-
-def message_success_and_redirect(request, message):
-    messages.success(request, message)
-    return redirect('home')
+    return message_error_and_redirect(request, 'Algo deu errado, tente novamente em alguns minutos', 'home')
 
 def get_all_fields(request):
     name = get_field_serialized(request, 'name')
@@ -33,9 +24,9 @@ def try_to_send_message(request):
     fields = get_all_fields(request)
     try:
         send_message_for_mail(fields)
-        return message_success_and_redirect(request, 'Mensagem anviada com sucesso')
+        return message_success_and_redirect(request, 'Mensagem anviada com sucesso', 'home')
     except:
-        return message_error_and_redirect(request, 'Falha ao tentar enviar o email')
+        return message_error_and_redirect(request, 'Falha ao tentar enviar o email', 'home')
 
 def send_message_for_mail(fields):
     send_mail(
