@@ -15,6 +15,7 @@ def login_client(request):
 
 def login_client_or_404(request, user):
     if user is not None:
+        auth.login(request, user)
         return message_success_and_redirect(request, 'Login realizado com sucesso', 'dashboard')
     return message_error_and_redirect(request, 'Credenciais não reconhecidas', 'login')
 
