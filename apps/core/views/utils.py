@@ -14,4 +14,7 @@ def message_info_and_redirect(request, message, to_page):
     return redirect(to_page)
 
 def get_field_serialized(request, field):
-    return request.POST.get(field).strip()
+    return str(request.POST.get(field)).strip()
+
+def get_search_field_serialized(request, field):
+    return str(request.GET.get(field)).strip()
