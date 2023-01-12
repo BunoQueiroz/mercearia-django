@@ -1,14 +1,11 @@
 from django.shortcuts import redirect
 from user.models import Client
 from django.contrib.auth import authenticate
-from core.views.utils import message_error_and_redirect, message_success_and_redirect
+from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized
 
 def set_password_client(request):
     if request.method == 'POST':
-        current_password = request.POST.get('currentPassword')
-        new_password = request.POST.get('newPassword')
-        confirm_new_password = request.POST.get('confirmNewPassword')
-        return invalid_passwords_or_set(request, current_password, new_password, confirm_new_password)
+        return try_set_new_password(request)
     return redirect('profile')
 
 def set_new_password_or_404(request, current_password, new_password):
@@ -36,3 +33,9 @@ def invalid_passwords_or_set(request, current_password, new_password, confirm_ne
     if new_password != confirm_new_password or len(str(new_password)) < 8:
         return message_error_and_redirect(request, 'Por favor revise sua nova senha', 'profile')
     return set_new_password_or_404(request, current_password, new_password)
+
+def try_set_new_password(request):
+    current_password = get_field_serialized(request, 'currentPassword')
+    new_password = get_field_serialized(request, 'newPassword')
+    confirm_new_password = get_field_serialized(request, 'confirmNewPassword')
+    return invalid_passwords_or_set(request, current_password, new_password, confirm_new_password)
