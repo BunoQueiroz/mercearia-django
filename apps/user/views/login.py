@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
-from core.views.utils import message_error_and_redirect, message_success_and_redirect
+from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized
 
 def login(request):
     return render(request, 'user/login.html')
 
 def login_client(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+        email = get_field_serialized(request, 'email')
+        password = get_field_serialized(request, 'password')
         return login_client_if_exists(request, email, password)
     return redirect('login')
 
