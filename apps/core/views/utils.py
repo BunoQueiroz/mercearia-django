@@ -1,5 +1,6 @@
 from django.shortcuts import redirect
 from django.contrib import messages
+from user.models import Client
 
 def message_success_and_redirect(request, message, to_page):
     messages.success(request, message)
@@ -18,3 +19,6 @@ def get_field_serialized(request, field):
 
 def get_search_field_serialized(request, field):
     return str(request.GET.get(field)).strip()
+
+def get_client_authenticated(request):
+    return Client.objects.filter(username=request.user.username).get()

@@ -1,7 +1,6 @@
 from django.shortcuts import redirect
-from user.models import Client
 from django.contrib.auth import authenticate
-from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized
+from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized, get_client_authenticated
 
 def set_password_client(request):
     if request.method == 'POST':
@@ -21,9 +20,6 @@ def authenticator_client(request, current_password):
     if user is not None:
         return True
     return False
-
-def get_client_authenticated(request):
-    return Client.objects.filter(username=request.user.username).get()
 
 def set_new_password_and_save(client, new_password):
     client.set_password(str(new_password))
