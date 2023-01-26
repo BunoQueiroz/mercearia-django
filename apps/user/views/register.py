@@ -1,26 +1,23 @@
-from django.shortcuts import render, redirect
-from core.views.utils import message_success_and_redirect, message_error_and_redirect, get_field_serialized
-from django.contrib.auth.models import User
+from django.shortcuts import render
+from core.views.utils import message_success_and_redirect, get_field_serialized
 from user.models import Client
+from user.forms import ClientRegisterForm
 
 def register(request):
-    return render(request, 'user/register.html')
+    form = ClientRegisterForm()
+    return render(request, 'user/register.html', context={'form': form})
 
 def register_client(request):
-    if request.method == 'POST':
-        return register_client_or_404(request)
-    return redirect('register')
+    form = ClientRegisterForm(request.POST)
+    if request.method == 'POST' and form.is_valid():
+        return try_register_client(request)
+    return render(request, 'user/register.html', {'form': form})
 
-def register_client_or_404(request):
+def try_register_client(request):
     email = get_field_serialized(request, 'email')
     password = get_field_serialized(request, 'password')
-    confirm_password = get_field_serialized(request, 'confirmPassword')
-
-    if(password != confirm_password or len(str(password)) < 8 or User.objects.filter(email=email).exists()):
-        return message_error_and_redirect(request, 'Por favor, verifique sua senha, ou insira um email válido', 'register')
-    
-    first_name = get_field_serialized(request, 'name')
-    last_name = get_field_serialized(request, 'lastName')
+    first_name = get_field_serialized(request, 'first_name')
+    last_name = get_field_serialized(request, 'last_name')
 
     Client.objects.create_user(username=email, first_name=first_name, last_name=last_name, email=email, password=password, is_superuser=False)
     return message_success_and_redirect(request, 'Cadastro realizado com sucesso', 'login')
