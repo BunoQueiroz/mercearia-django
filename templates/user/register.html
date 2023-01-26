@@ -1,5 +1,6 @@
 {% extends 'partials/_base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block link %}
 <link rel="stylesheet" href="{% static 'styles/register.css' %}">
 {% endblock link %}
@@ -17,26 +18,21 @@
           <legend class="form-item text-center d-flex justify-content-center">
             <img src="{% static 'img/icon.jpg' %}" alt="Login icon" class="register-icon">
           </legend>
-          <div class="form-item pb-3">
-            <label for="inputName" class="form-label text-light fw-semibold m-0">Nome</label>
-            <input type="text" name="name" class="form-control form-control--name fst-italic form-input fw-semibold" id="inputName" aria-describedby="emailHelp" data-type="name" required>
-          </div>
-          <div class="form-item pb-3">
-            <label for="inputLastName" class="form-label text-light fw-semibold m-0">Sobrenome</label>
-            <input type="text" name="lastName" class="form-control form-control--name fst-italic form-input fw-semibold" id="inputLastName" aria-describedby="emailHelp" data-type="lastName" required>
-          </div>
-          <div class="form-item pb-3">
-            <label for="inputEmail" class="form-label text-light fw-semibold m-0">Email</label>
-            <input type="email" name="email" class="form-control fst-italic form-input fw-semibold" id="inputEmail" aria-describedby="emailHelp" data-type="email" required>
-          </div>
-          <div class="form-item pb-3">
-            <label for="inputPassword" class="form-label text-light fw-semibold m-0">Senha</label>
-            <input type="password" name="password" class="form-control fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
-          </div>
-          <div class="form-item pb-3">
-            <label for="inputPassword" class="form-label text-light fw-semibold m-0">Confirmar Senha</label>
-            <input type="password" name="confirmPassword" class="form-control fst-italic form-input fw-semibold" id="inputPassword" data-type="password" data-type="password" required>
-          </div>
+          {% if form.visible_fields %}
+            {% for field in form.visible_fields %}
+              <div class="form-item pb-3">
+                <label class="form-label text-light fw-semibold m-0" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field|add_class:'form-control form-control--name fst-italic form-input fw-semibold' }}
+                {% if field.errors %}
+                  {% for error in field.errors %}
+                    <div class="alert alert-danger m-0 mt-1 p-1">
+                      <p class="m-0 p-0">{{ error }}</p>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            {% endfor %}
+          {% endif %}
           <div class="mb-3 form-check d-flex justify-content-between">
             <div>
               <input type="checkbox" class="form-check-input" id="checkBox">
