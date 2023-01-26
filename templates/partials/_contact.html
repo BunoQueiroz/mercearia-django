@@ -12,6 +12,13 @@
                         <div class="col-9 mb-1">
                             <label for="{{ field.id_for_label }}" class="form-label mb-0 fs-4">{{ field.label }}</label>
                             {{ field|add_class:'form-control fw-semibold text-primary fs-5 py-0' }}
+                            {% if field.errors %}
+                                <div class="alert alert-danger m-0 p-1 mt-1">
+                                    {% for error in field.errors %}
+                                        <span class="p-1">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                     <div class="mb-3 form-check d-flex">
