@@ -1,5 +1,6 @@
 from django import forms
 from user.models import User
+from .utils import iterate_error_list
 from user.forms.validators import login_validator
 
 class LoginForm(forms.ModelForm):
@@ -20,8 +21,5 @@ class LoginForm(forms.ModelForm):
         errors_list = {}
         login_validator(email, password, errors_list)
 
-        if errors_list is not None:
-            for error in errors_list:
-                message_error = errors_list[error]
-                self.add_error(error, message_error)
+        iterate_error_list(errors_list, self)
         return self.cleaned_data

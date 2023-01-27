@@ -1,5 +1,6 @@
 from user.models import Client
 from django import forms
+from .utils import iterate_error_list
 from core.validators import non_numeric_field
 from user.forms.validators import password_validator, repeated_email
 
@@ -35,9 +36,6 @@ class ClientRegisterForm(forms.ModelForm):
         password_validator(password, confirm_password, errors_list)
         repeated_email(email, errors_list)
 
-        if errors_list is not None:
-            for error in errors_list:
-                message_error = errors_list[error]
-                self.add_error(error, message_error)
+        iterate_error_list(errors_list, self)
 
         return self.cleaned_data
