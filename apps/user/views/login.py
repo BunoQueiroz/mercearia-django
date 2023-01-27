@@ -1,28 +1,20 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib import auth
-from django.contrib.auth.models import User
-from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized
+from core.views.utils import message_success_and_redirect, get_client_authenticated
+from user.forms import LoginForm
 
 def login(request):
-    return render(request, 'user/login.html')
+    form = LoginForm()
+    return render(request, 'user/login.html', {'form': form})
 
 def login_client(request):
-    if request.method == 'POST':
-        email = get_field_serialized(request, 'email')
-        password = get_field_serialized(request, 'password')
-        return login_client_if_exists(request, email, password)
-    return redirect('login')
+    form = LoginForm(request.POST)
+    if request.method == 'POST' and form.is_valid():
+        return login_client_or_404(request)
+    return render(request, 'user/login.html', {'form': form})
 
-def login_client_or_404(request, user):
-    if user is not None:
-        auth.login(request, user)
-        return message_success_and_redirect(request, 'Login realizado com sucesso', 'dashboard')
-    return message_error_and_redirect(request, 'Credenciais não reconhecidas', 'login')
+def login_client_or_404(request):
+    client = get_client_authenticated(request)
+    auth.login(request, client)
+    return message_success_and_redirect(request, 'Login realizado com sucesso', 'dashboard')
 
-def login_client_if_exists(request, email, password):
-    users_data = User.objects
-    if users_data.filter(email=email).exists():
-        username = users_data.get(email=email)
-        user = auth.authenticate(username=username, password=password)
-        return login_client_or_404(request, user)
-    return message_error_and_redirect(request, 'Email não cadastrado', 'login')
