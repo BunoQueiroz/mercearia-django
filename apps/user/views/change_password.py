@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate
-from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized, get_client_authenticated
+from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized, get_object_client
 
 def set_password_client(request):
     if request.method == 'POST':
@@ -9,13 +9,13 @@ def set_password_client(request):
 
 def set_new_password_or_404(request, current_password, new_password):
     if authenticator_client(request, current_password):
-        client = get_client_authenticated(request)
+        client = get_object_client(request)
         set_new_password_and_save(client, new_password)
         return message_success_and_redirect(request, 'Senha alterada com sucesso', 'login')
     return message_error_and_redirect(request, 'Senha atual incorreta', 'profile')
 
 def authenticator_client(request, current_password):
-    client = get_client_authenticated(request)
+    client = get_object_client(request)
     user = authenticate(username=client.username, password=current_password)
     if user is not None:
         return True
