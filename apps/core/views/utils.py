@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.contrib import messages
 from user.models import Client
+from django.contrib import auth
 
 def message_success_and_redirect(request, message, to_page):
     messages.success(request, message)
@@ -21,4 +22,9 @@ def get_search_field_serialized(request, field):
     return str(request.GET.get(field)).strip()
 
 def get_client_authenticated(request):
-    return Client.objects.filter(username=request.user.username).get()
+    password = get_field_serialized(request, 'password')
+    email = get_field_serialized(request, 'email')
+    username = Client.objects.filter(email=email).get().username
+    client = auth.authenticate(request, username=username, password=password)
+    if client is not None:
+        return client
