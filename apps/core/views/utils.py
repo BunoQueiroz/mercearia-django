@@ -28,3 +28,6 @@ def get_client_authenticated(request):
     client = auth.authenticate(request, username=username, password=password)
     if client is not None:
         return client
+
+def get_object_client(request):
+    return Client.objects.filter(username=request.user.username).get()
