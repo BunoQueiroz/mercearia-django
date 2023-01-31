@@ -1,0 +1,16 @@
+{% extends 'partials/_base.html' %}
+
+{% block title %}{{ product.name }}{% endblock title %}
+
+{% block content %}
+    <section class="container my-2">
+        <div class="row justify-content-between">
+            <img class="col-12 col-sm-6 my-3" src="{{ product.image.url }}" alt="{{ product.description }}">
+            <div class="col-12 col-sm-5 d-flex flex-column justify-content-around">
+                <h4 class="text-center fs-2">{{ product.name }}</h4>
+                <p class="text-justify px-3 fs-4 fw-normal">{{ product.description }}</p>
+                <button class="btn btn-primary align-self-end">R$ {{ product.price }}</button>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
