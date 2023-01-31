@@ -13,9 +13,11 @@
 * Autenticação e login de usuário
 * Dashboard para clientes logados
 * Atualização de dados dos clientes
+* Alteração de senha dos clientes
 * Página para exibição dos produtos conforme sua categoria
 * Mostrar detalhes de cada compra dos clientes
-* Alteração de senha dos clientes
+* Validação de formulários
+* Landing Page básica para cada produto
 * Envio de email
 
 # Para Utilizar o projeto em seu computador realize os seguintes comandos:
