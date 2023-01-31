@@ -9,7 +9,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=20)
-    description = models.CharField(max_length=100, blank=True)
+    description = models.CharField(max_length=256, blank=True)
     date_create = models.DateTimeField(default=datetime.now())
     image = models.ImageField(upload_to='products/images/%Y/%m/%d/')
     price = models.FloatField()
