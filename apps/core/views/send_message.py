@@ -7,11 +7,9 @@ from django.contrib import messages
 
 def send_by_email(request):
     form = ContactForms(request.POST)
-    if request.method == "POST":
-        if form.is_valid():
-            return try_to_send_message(request)
-    messages.error(request, 'Sua mensagem não foi enviada. Por favor, tente novamente')
-    return render(request, 'core/index.html', {'form': form})
+    if request.method == "POST" and form.is_valid():
+        return try_to_send_message(request)
+    return render(request, 'core/contact.html', {'form': form})
 
 def get_all_fields(request):
     name = get_field_serialized(request, 'name')
