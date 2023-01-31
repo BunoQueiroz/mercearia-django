@@ -1,0 +1,11 @@
+{% extends 'partials/_base.html' %}
+{% block title %}Página não encontrada{% endblock title %}
+
+{% block content %}
+
+<section class="container text-center py-5 my-5">
+    <h1 class="py-5 my-5">Página Não Encontrada</h1>
+    <a class="py-5 my-5" href="{% url 'home' %}" class="text-primary">Começe por aqui!</a>
+</section>
+
+{% endblock content %}
