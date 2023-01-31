@@ -16,13 +16,12 @@
           <a class="fs-5 nav-link font-header" href="{% url 'all_products' %}">Produtos</a>
           <a class="fs-5 nav-link font-header" href="{% url 'login' %}">Entrar</a>
           <a class="fs-5 nav-link font-header " href="{% url 'register' %}">Cadastro</a>
-          <a class="fs-5 nav-link font-header" data-bs-toggle="modal" data-bs-target="#modal">Contato</a>
+          <a class="fs-5 nav-link font-header" href="{% url 'contact' %}">Contato</a>
         </div>
         {% endif %}
       </div>
     </div>
   </nav>
-  {% include 'partials/_contact.html' %}
   {% include 'partials/_search.html' %}
 </header>
 {% endblock %}
