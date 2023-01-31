@@ -11,11 +11,10 @@
     <article class="row m-0">
         {% for product in products %}
             {% if product.category == category %}
-                <div class="card col-11 col-sm-4 col-md-4 my-1 col-lg-4 col-xxl-4 p-0">
+                <div class="card col-6 col-sm-4 col-md-4 my-1 col-lg-4 col-xxl-4 p-2">
                     <img src="{{ product.image.url }}" class="align-self-center image-product" alt="product.name">
                     <div class="card-body pb-0 px-2">
-                        <a href="#" class="btn btn-primary">{{ product.name }}</a>
-                        <p class="card-text">{{ product.description }}</p>
+                        <a class="btn btn-primary" href="{% url 'landing_page' product.id %}">{{ product.name }}</a>
                         <h5 class="card-title text-end">R$ {{ product.price }}</h5>
                     </div>
                 </div>
