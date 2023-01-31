@@ -1,8 +1,8 @@
 {% if request.user.is_authenticated %}
-<div class="container my-2">
+<div class="container my-1">
     <form class="row g-3" method="GET" action="{% url 'search' %}">{% csrf_token %}
         <div class="col-9">
-            <input type="text" class="form-control" name="search" placeholder="Pesquise aqui" required>
+            <input type="text" class="form-control" name="search" placeholder="Pesquise por produtos aqui" required>
         </div>
         <div class="col-3">
             <button class="btn btn-success" type="submit">Pesquisar</button>
