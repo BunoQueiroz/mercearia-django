@@ -1,5 +1,6 @@
 {% extends 'partials/_base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block link %}
   <link href="{% static 'styles/profile.css' %}" rel="stylesheet">
 {% endblock link %}
@@ -7,39 +8,40 @@
 {% block content %}
     <div class="container my-3">
       <form action="{% url 'update_profile' %}" class="formulario mt-4" method="POST" enctype="multipart/form-data">{% csrf_token %}
-        {% if client.image %}
+        {% if form.instance.image %}
           <figure class="d-flex justify-content-center">
-              <img class="align-self-center rounded-5 image-user" src="{{ client.image.url }}" alt="Icone de Usuário">
+              <img class="align-self-center rounded-5 image-user" src="{{ form.instance.image.url }}" alt="Icone de Usuário">
           </figure>
         {% else %}
           <figure class="d-flex justify-content-center">
               <img class="align-self-center rounded-5 image-user" src="{% static 'img/user-pattern.svg' %}" alt="Icone de Usuário">
           </figure>
         {% endif %}
-        <div class="mb-3">
-          <label for="img" class="form-label fw-semibold fs-5">Alterar Foto de Perfil</label>
-          <input type="file" class="form-control" placeholder="Sua foto" name="img">
-          <p class="text-info">Melhor formato: 1024x1024</p>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <label for="email" class="form-label fw-semibold fs-5">Seu Nome</label>
-                <input type="text" class="form-control fw-semibold" placeholder="Nome" name="firstName" value="{{ client.first_name }}" required>
-            </div>
-            <div class="col">
-                <label for="email" class="form-label fw-semibold fs-5">Seu Sobrenome</label>
-                <input type="text" class="form-control fw-semibold" placeholder="Sobrenome" name="lastName" value="{{ client.last_name }}" required>
-            </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-              <label for="username" class="form-label fw-semibold fs-5">Nome de usuário</label>
-              <input type="text" class="form-control fw-semibold" placeholder="Seu nome de usuário" name="username" value="{{ client.username }}" required>
-          </div>
-          <div class="col">
-              <label for="email" class="form-label fw-semibold fs-5">Email</label>
-              <input type="email" class="form-control fw-semibold" id="email" placeholder="Seu email" name="email" value="{{ client.email }}">
-          </div>
+        <div class="row">
+          {% for field in form %}
+            {% if field.name == 'image' %}
+              <div class="col-12 mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label fw-semibold fs-5">{{ field.label }}</label>
+                <div class="">
+                  {{ field|add_class:'form-control fw-semibold' }}
+                </div>
+                {% for error in field.errors %}
+                  <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+                <p class="text-info m-0">Melhor formato: 1024x1024</p>
+              </div>
+            {% else %}
+              <div class="col-6 mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label fw-semibold fs-5">{{ field.label }}</label>
+                {{ field|add_class:'form-control fw-semibold' }}
+                {% for error in field.errors %}
+                  <div class="alert alert-danger m-0 mt-1 p-1">
+                    <p class="m-0 p-0">{{ error }}</p>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
         <a type="button" class="fs-5 nav-link my-3 text-secondary fw-semibold" data-bs-toggle="modal" data-bs-target="#changePassword">Alterar senha</a>
         <button type="submit" class="btn btn-success btn-lg">Salvar</button>
