@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from user.models import Purchase, Account
 from core.views.utils import message_info_and_redirect
+from django.contrib import messages
 
 def my_account(request):
     if request.user.is_authenticated:
@@ -22,7 +23,8 @@ def get_purchase_or_404(account):
 
 def render_client_purchase(request, client_purchase):
     if client_purchase is None:
-        return message_info_and_redirect(request, 'Você ainda não realizou compra conosco', 'dashboard')
+        messages.info(request, 'Você ainda não realizou compra conosco')
+        return render(request, 'user/my_account.html')
     total = final_value(client_purchase)
     context = {'purchases': client_purchase, 'total': total}
     return render(request, 'user/my_account.html', context)
