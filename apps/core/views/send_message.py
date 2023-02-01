@@ -3,7 +3,6 @@ from django.core.mail import send_mail
 from .utils import message_error_and_redirect, message_success_and_redirect
 from core.forms import ContactForms
 from django.shortcuts import render
-from django.contrib import messages
 
 def send_by_email(request):
     form = ContactForms(request.POST)
