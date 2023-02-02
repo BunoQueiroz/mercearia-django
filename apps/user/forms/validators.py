@@ -24,8 +24,17 @@ def login_validator(email, password, errors_list):
         errors_list['email'] = 'Email não Cadastrado'
         return
 
-    user = Client.objects.get(email=email)
-    client = auth.authenticate(username=user.username, password=password)
+    client = client_authenticate_for_email(email, password)
     if client is None:
         errors_list['password'] = 'Credenciais não reconhecidas'
+
+def client_authenticate_for_email(email, password):
+    user = Client.objects.get(email=email)
+    client = auth.authenticate(username=user.username, password=password)
+    return client
+
+def current_password_validator(current_password, email, errors_list):
+    client = client_authenticate_for_email(email, current_password)
+    if client is None:
+        errors_list['password'] = 'Senha não reconhecida'
 
