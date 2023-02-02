@@ -1,37 +1,22 @@
-from django.shortcuts import redirect
-from django.contrib.auth import authenticate
-from core.views.utils import message_error_and_redirect, message_success_and_redirect, get_field_serialized, get_object_client
+from django.shortcuts import render, get_object_or_404
+from core.views.utils import get_field_serialized, get_object_client
+from user.forms import ChangePasswordForm
+from user.models import Client
+from user.views.profile_user import save_client, create_context_profile
+from django.contrib import messages
 
 def set_password_client(request):
-    if request.method == 'POST':
-        return try_set_new_password(request)
-    return redirect('profile')
+    form = ChangePasswordForm(request.POST)
+    if request.method == 'POST' and form.is_valid():
+        return set_new_password(request)
 
-def set_new_password_or_404(request, current_password, new_password):
-    if authenticator_client(request, current_password):
-        client = get_object_client(request)
-        set_new_password_and_save(client, new_password)
-        return message_success_and_redirect(request, 'Senha alterada com sucesso', 'login')
-    return message_error_and_redirect(request, 'Senha atual incorreta', 'profile')
+    messages.error(request, 'Senha não alterada')
+    user = get_object_or_404(Client, username=request.user.username)
+    context = create_context_profile(request, initial={'email': user.email}, data=request.POST)
+    return render(request, 'user/profile.html', context)
 
-def authenticator_client(request, current_password):
+def set_new_password(request):
     client = get_object_client(request)
-    user = authenticate(username=client.username, password=current_password)
-    if user is not None:
-        return True
-    return False
-
-def set_new_password_and_save(client, new_password):
-    client.set_password(str(new_password))
-    client.save()
-
-def invalid_passwords_or_set(request, current_password, new_password, confirm_new_password):
-    if new_password != confirm_new_password or len(str(new_password)) < 8:
-        return message_error_and_redirect(request, 'Por favor revise sua nova senha', 'profile')
-    return set_new_password_or_404(request, current_password, new_password)
-
-def try_set_new_password(request):
-    current_password = get_field_serialized(request, 'currentPassword')
-    new_password = get_field_serialized(request, 'newPassword')
-    confirm_new_password = get_field_serialized(request, 'confirmNewPassword')
-    return invalid_passwords_or_set(request, current_password, new_password, confirm_new_password)
+    new_password = get_field_serialized(request, 'new_password')
+    client.set_password(new_password)
+    return save_client(request, client)
