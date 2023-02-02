@@ -7,16 +7,16 @@
 {% block title %}Meu perfil{% endblock title %}
 {% block content %}
     <div class="container my-3">
+      {% if form.instance.image %}
+        <figure class="d-flex justify-content-center">
+            <img class="align-self-center rounded-5 image-user" src="{{ form.instance.image.url }}" alt="Icone de Usuário">
+        </figure>
+      {% else %}
+        <figure class="d-flex justify-content-center">
+            <img class="align-self-center rounded-5 image-user" src="{% static 'img/user-pattern.svg' %}" alt="Icone de Usuário">
+        </figure>
+      {% endif %}
       <form action="{% url 'update_profile' %}" class="formulario mt-4" method="POST" enctype="multipart/form-data">{% csrf_token %}
-        {% if form.instance.image %}
-          <figure class="d-flex justify-content-center">
-              <img class="align-self-center rounded-5 image-user" src="{{ form.instance.image.url }}" alt="Icone de Usuário">
-          </figure>
-        {% else %}
-          <figure class="d-flex justify-content-center">
-              <img class="align-self-center rounded-5 image-user" src="{% static 'img/user-pattern.svg' %}" alt="Icone de Usuário">
-          </figure>
-        {% endif %}
         <div class="row">
           {% for field in form %}
             {% if field.name == 'image' %}
