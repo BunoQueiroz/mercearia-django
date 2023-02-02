@@ -24,11 +24,7 @@
                 <label class="form-label text-light fw-semibold m-0" for="{{ field.id_for_label }}">{{ field.label }}</label>
                 {{ field|add_class:'form-control form-control--name fst-italic form-input fw-semibold' }}
                 {% if field.errors %}
-                  {% for error in field.errors %}
-                    <div class="alert alert-danger m-0 mt-1 p-1">
-                      <p class="m-0 p-0">{{ error }}</p>
-                    </div>
-                  {% endfor %}
+                  {% include 'partials/_error_messages.html' %}
                 {% endif %}
               </div>
             {% endfor %}

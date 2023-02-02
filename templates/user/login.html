@@ -18,13 +18,7 @@
                     <div class="form-item pb-3">
                         <label class="form-label fw-semibold m-0" for="{{ field.id_for_label }}">{{ field.label }}</label>
                         {{ field|add_class:'form-control text-light fst-italic form-input fw-semibold' }}
-                        {% if field.errors %}
-                            {% for error in field.errors %}
-                                <div class="alert alert-danger m-0 mt-1 p-0">
-                                    <p class="m-0 p-1">{{ error }}</p>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
+                        {% include 'partials/_error_messages.html' %}
                     </div>
                 {% endfor %}
                 <div class="mb-3 form-check d-flex justify-content-between">
