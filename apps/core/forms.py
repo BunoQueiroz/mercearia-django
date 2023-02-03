@@ -1,13 +1,17 @@
 from django import forms
 from core.validators import *
 from core.models import Contact
+from user.forms.utils import iterate_error_list
 
 class ContactForms(forms.ModelForm):
     class Meta:
         model = Contact
         fields = '__all__'
         widgets = {
-            'message': forms.Textarea(),
+            'full_name': forms.TextInput(attrs={'class':'form-control fw-semibold text-primary fs-5 py-0'}),
+            'email': forms.EmailInput(attrs={'class':'form-control fw-semibold text-primary fs-5 py-0'}),
+            'phone': forms.TextInput(attrs={'class':'form-control fw-semibold text-primary fs-5 py-0'}),
+            'message': forms.Textarea(attrs={'class':'form-control fw-semibold text-primary fs-5 py-0'}),
         }
         labels = {
             'full_name': 'Nome completo',
@@ -26,8 +30,5 @@ class ContactForms(forms.ModelForm):
         phone_valid(phone, 'phone', errors_list)
         message_valid(message, 'message', errors_list)
 
-        if errors_list is not None:
-            for error in errors_list:
-                message_error = errors_list[error]
-                self.add_error(error, message_error)
+        iterate_error_list(errors_list, self)
         return self.cleaned_data

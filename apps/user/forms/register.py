@@ -9,7 +9,10 @@ class ClientRegisterForm(forms.ModelForm):
         model = Client
         fields = ['first_name', 'last_name', 'email', 'password']
         widgets = {
-            'password': forms.PasswordInput()
+            'first_name': forms.TextInput(attrs={'class': 'form-control fst-italic form-input fw-semibold'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control fst-italic form-input fw-semibold'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control fst-italic form-input fw-semibold'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control fst-italic form-input fw-semibold'}),
         }
         labels = {
             'first_name': 'Nome',
@@ -21,8 +24,10 @@ class ClientRegisterForm(forms.ModelForm):
         max_length=256, 
         required=True, 
         label='Confirmar Senha',
-        widget=forms.PasswordInput()
+        widget=forms.PasswordInput(
+            attrs={'class':'form-control fst-italic form-input fw-semibold'}
         )
+    )
 
     def clean(self):
         first_name = self.cleaned_data.get('first_name')

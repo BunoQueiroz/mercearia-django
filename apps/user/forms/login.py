@@ -12,7 +12,8 @@ class LoginForm(forms.ModelForm):
             'password': 'Senha'
         }
         widgets = {
-            'password': forms.PasswordInput()
+            'email': forms.EmailInput(attrs={'class': 'form-control text-light fst-italic form-input fw-semibold'}),
+            'password': forms.PasswordInput(attrs={'class':'form-control text-light fst-italic form-input fw-semibold'}),
         }
 
     def clean(self):

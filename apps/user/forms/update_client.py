@@ -15,10 +15,11 @@ class UpdateClientForm(forms.ModelForm):
             'email': 'Email'
         }
         widgets = {
-            'first_name': forms.TextInput(attrs={ 'placeholder': 'Seu nome'}),
-            'last_name': forms.TextInput(attrs={ 'placeholder': 'Seu sobrenome'}),
-            'username': forms.TextInput(attrs={ 'placeholder': 'Nome de usuário'}),
-            'email': forms.TextInput(attrs={'placeholder': 'Seu email'})
+            'image': forms.FileInput(attrs={ 'placeholder': 'Seu nome', 'class': 'form-control fw-semibold'}),
+            'first_name': forms.TextInput(attrs={ 'placeholder': 'Seu nome', 'class': 'form-control fw-semibold'}),
+            'last_name': forms.TextInput(attrs={ 'placeholder': 'Seu sobrenome', 'class': 'form-control fw-semibold'}),
+            'username': forms.TextInput(attrs={ 'placeholder': 'Nome de usuário', 'class': 'form-control fw-semibold'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Seu email', 'class': 'form-control fw-semibold'}),
         }
 
     def clean(self):
