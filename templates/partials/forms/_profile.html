@@ -1,9 +1,14 @@
 {% if form.visible_fields %}
     {% for field in form.visible_fields %}
-        <div {% if field.name == 'image' %} class="col-12 mb-3" {% else %} class="col-6 mb-3" {% endif %}>
-            <label for="{{ field.id_for_label }}" class="form-label fw-semibold fs-5">{{ field.label }}</label>
-            {{ field }}
-            {% include 'partials/_error_messages.html' %}
-        </div>
+        {% if field.name == 'image' %}
+            <div class="col-12 mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label fw-semibold fs-5 col-12">{{ field.label }}</label>
+        {% else %}
+            <div class="col-6 mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label fw-semibold fs-5">{{ field.label }}</label>
+        {% endif %}
+                {{ field }}
+                {% include 'partials/_error_messages.html' %}
+            </div>
     {% endfor %}
 {% endif %}
