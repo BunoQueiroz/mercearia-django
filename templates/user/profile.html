@@ -1,6 +1,5 @@
 {% extends 'partials/_base.html' %}
 {% load static %}
-{% load widget_tweaks %}
 {% block link %}
   <link href="{% static 'styles/profile.css' %}" rel="stylesheet">
 {% endblock link %}
@@ -18,26 +17,7 @@
       {% endif %}
       <form action="{% url 'update_profile' %}" class="formulario mt-4" method="POST" enctype="multipart/form-data">{% csrf_token %}
         <div class="row">
-          {% for field in form %}
-            {% if field.name == 'image' %}
-              <div class="col-12 mb-3">
-                <label for="{{ field.id_for_label }}" class="form-label fw-semibold fs-5">{{ field.label }}</label>
-                <div class="">
-                  {{ field|add_class:'form-control fw-semibold' }}
-                </div>
-                {% for error in field.errors %}
-                  <p class="alert alert-danger">{{ error }}</p>
-                {% endfor %}
-                <p class="text-info m-0">Melhor formato: 1024x1024</p>
-              </div>
-            {% else %}
-              <div class="col-6 mb-3">
-                <label for="{{ field.id_for_label }}" class="form-label fw-semibold fs-5">{{ field.label }}</label>
-                {{ field|add_class:'form-control fw-semibold' }}
-                {% include 'partials/_error_messages.html' %}
-              </div>
-            {% endif %}
-          {% endfor %}
+          {% include 'partials/forms/_profile.html' %}
         </div>
         <a type="button" class="fs-5 nav-link my-3 text-secondary fw-semibold" data-bs-toggle="modal" data-bs-target="#changePassword">Alterar senha</a>
         <button type="submit" class="btn btn-success btn-lg">Salvar</button>

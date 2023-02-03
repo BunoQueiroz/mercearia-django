@@ -1,6 +1,5 @@
 {% extends 'partials/_base.html' %}
 {% load static %}
-{% load widget_tweaks %}
 {% block link %}
 <link rel="stylesheet" href="{% static 'styles/login.css' %}">
 {% endblock link %}
@@ -14,13 +13,7 @@
                 <legend class="form-item text-center d-flex justify-content-center">
                     <img src="{% static 'img/icon-login.svg' %}" alt="Login icon" class="login-icon">
                 </legend>
-                {% for field in form.visible_fields %}
-                    <div class="form-item pb-3">
-                        <label class="form-label fw-semibold m-0" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {{ field|add_class:'form-control text-light fst-italic form-input fw-semibold' }}
-                        {% include 'partials/_error_messages.html' %}
-                    </div>
-                {% endfor %}
+                {% include 'partials/forms/_login.html' %}
                 <div class="mb-3 form-check d-flex justify-content-between">
                     <div>
                         <input type="checkbox" class="form-check-input" id="checkBox">

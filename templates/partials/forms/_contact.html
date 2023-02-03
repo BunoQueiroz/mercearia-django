@@ -1,0 +1,7 @@
+{% for field in form.visible_fields %}
+    <div class="mx-3 col-9 mb-1">
+        <label for="{{ field.id_for_label }}" class="form-label mb-0 fs-4">{{ field.label }}</label>
+        {{ field }}
+        {% include 'partials/_error_messages.html' %}
+    </div>
+{% endfor %}
