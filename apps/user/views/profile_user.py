@@ -1,21 +1,22 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from user.models import Client
+from django.shortcuts import render, redirect
 from core.views.utils import message_success_and_redirect, get_field_serialized, get_object_client
 from user.forms import UpdateClientForm, ChangePasswordForm
 
 def profile(request):
     if request.user.is_authenticated:
-        context = create_context_profile(request)
+        client = get_object_client(request)
+        context = create_context_profile(user=client, email_client=client.email)
         return render(request, 'user/profile.html', context)
     return redirect('home')
 
 def update_profile(request):
     form = UpdateClientForm(request.POST)
+    client = get_object_client(request)
     if request.method == 'POST' and form.is_valid():
-        client = get_object_client(request)
         set_all_fields_client(request, client)    
         return save_client(request, client)
-    return render(request, 'user/profile.html', {'form': form})
+    context = create_context_profile(data_form=request.POST, email_client=client.email)
+    return render(request, 'user/profile.html', context)
 
 def set_image_client(request, client):
     if 'image' in request.FILES:
@@ -24,11 +25,9 @@ def set_image_client(request, client):
     if request.POST.get('image-clear') == 'on':
         client.image = ''
 
-def create_context_profile(request, data=None, *args, **kwargs):
-    username = request.user.username
-    user = get_object_or_404(Client, username=username)
-    form = UpdateClientForm(instance=user)
-    change_password = ChangePasswordForm(data, initial={'email': user.email})
+def create_context_profile(data_form=None, user=None, data_password=None, email_client=None):
+    form = UpdateClientForm(data=data_form, instance=user)
+    change_password = ChangePasswordForm(data=data_password, initial={'email': email_client})
     context = {
         'form': form,
         'change_password': change_password,
