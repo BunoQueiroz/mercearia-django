@@ -15,7 +15,7 @@ def update_profile(request):
         client = get_object_client(request)
         set_all_fields_client(request, client)    
         return save_client(request, client)
-    return render(request, 'user/profil.html', {'form': form})
+    return render(request, 'user/profile.html', {'form': form})
 
 def set_image_client(request, client):
     if 'image' in request.FILES:
