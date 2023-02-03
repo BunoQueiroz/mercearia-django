@@ -15,7 +15,7 @@ class UpdateClientForm(forms.ModelForm):
             'email': 'Email'
         }
         widgets = {
-            'image': forms.FileInput(attrs={ 'placeholder': 'Seu nome', 'class': 'form-control fw-semibold'}),
+            'image': forms.ClearableFileInput(attrs={ 'placeholder': 'Seu nome', 'class': 'form-control fw-semibold mt-2'}),
             'first_name': forms.TextInput(attrs={ 'placeholder': 'Seu nome', 'class': 'form-control fw-semibold'}),
             'last_name': forms.TextInput(attrs={ 'placeholder': 'Seu sobrenome', 'class': 'form-control fw-semibold'}),
             'username': forms.TextInput(attrs={ 'placeholder': 'Nome de usuário', 'class': 'form-control fw-semibold'}),
