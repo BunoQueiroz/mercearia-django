@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from core.views.utils import message_success_and_redirect, get_field_serialized, get_object_client
+from core.views.utils import message_success_and_redirect, get_field_serialized, get_object_client, message_error_and_redirect
 from user.forms import UpdateClientForm, ChangePasswordForm
+from django.db.utils import IntegrityError
 
 def profile(request):
     if request.user.is_authenticated:
@@ -23,7 +24,7 @@ def set_image_client(request, client):
         img = request.FILES['image']
         client.image = img # type: ignore
     if request.POST.get('image-clear') == 'on':
-        client.image = ''
+        client.image = None
 
 def create_context_profile(data_form=None, user=None, data_password=None, email_client=None):
     form = UpdateClientForm(data=data_form, instance=user)
@@ -35,8 +36,11 @@ def create_context_profile(data_form=None, user=None, data_password=None, email_
     return context
 
 def save_client(request, client):
-    client.save()
-    return message_success_and_redirect(request, 'Dados alterados com sucesso', 'profile')
+    try:
+        client.save()
+        return message_success_and_redirect(request, 'Dados alterados com sucesso', 'profile')
+    except IntegrityError:
+        return message_error_and_redirect(request, 'Usuário Inválido', 'profile')
 
 def set_all_fields_client(request, client):
     set_image_client(request, client)
