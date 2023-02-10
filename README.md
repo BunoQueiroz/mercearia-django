@@ -1,4 +1,4 @@
-# Mercearia
+# Mercadinho
 ![em desenvolvimento](https://img.shields.io/badge/STATUS-EM%20DESENVOLVIMENTO-brightgreen)
 
 # 🔨Ferramentas Utilizadas
