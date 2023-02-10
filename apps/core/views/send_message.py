@@ -13,7 +13,7 @@ def send_by_email(request):
 def get_all_fields(request):
     name = get_field_serialized(request, 'name')
     email = get_field_serialized(request, 'email')
-    wpp = get_field_serialized(request, 'whatsapp')
+    wpp = get_field_serialized(request, 'phone')
     message = get_field_serialized(request, 'message')
     dict_message = {
         'name': name,
