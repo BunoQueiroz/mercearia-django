@@ -3,6 +3,10 @@ body {
     background-color: #cccccc10;
 }
 
+.main {
+    min-height: calc(100vh - 322px);
+}
+
 .fixed {
     position: fixed;
     width: 100%;
