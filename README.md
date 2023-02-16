@@ -4,7 +4,7 @@
 # 🔨Ferramentas Utilizadas
 * Django 4.1.3
 * Bootstrap 5.2.2
-* Postgresql 6.8
+* Postgresql 15
 
 # Funcionalidades
 * Renderização de páginas web
