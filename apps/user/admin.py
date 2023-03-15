@@ -3,6 +3,7 @@ from .models import *
 
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'email', 'is_superuser')
+    list_display_links = ('email',)
     list_editable = ('is_superuser', )
     list_per_page = 10
 
