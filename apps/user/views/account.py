@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from user.models import Purchase, Account
 from core.views.utils import message_info_and_redirect
 from django.contrib import messages
@@ -8,33 +8,20 @@ def my_account(request):
         return my_account_or_404(request)
     return redirect('dashboard')
 
-def get_account_or_404(request):
-    client = request.user
-    account = Account.objects.filter(client=client)
-    if account.exists():
-        return account.get()
-    return None
-
-def get_purchase_or_404(account):
-    client_purchase = Purchase.objects.filter(account=account)
-    if not client_purchase:
-        return None
-    return client_purchase
-
 def render_client_purchase(request, client_purchase):
-    if client_purchase is None:
-        messages.info(request, 'Você ainda não realizou compra conosco')
+    if not client_purchase:
+        messages.info(request, 'Você ainda não realizou compra(s) conosco')
         return render(request, 'user/my_account.html')
     total = final_value(client_purchase)
     context = {'purchases': client_purchase, 'total': total}
     return render(request, 'user/my_account.html', context)
 
 def my_account_or_404(request):
-    account = get_account_or_404(request)
+    account = get_list_or_404(Account, client=request.user)[0]
     if account:
-        client_purchase = get_purchase_or_404(account)
+        client_purchase = Purchase.objects.filter(account=account)
         return render_client_purchase(request, client_purchase)
-    return message_info_and_redirect(request, 'Você ainda não possui conta', 'dashboard')
+    message_info_and_redirect(request, 'Você ainda não possui conta', 'dashboard')
 
 def final_value(client_purchase):
     result = 0
