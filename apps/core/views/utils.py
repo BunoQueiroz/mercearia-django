@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.contrib import messages
 from user.models import Client
 from django.contrib import auth
@@ -14,6 +14,10 @@ def message_error_and_redirect(request, message, to_page):
 def message_info_and_redirect(request, message, to_page):
     messages.info(request, message)
     return redirect(to_page)
+
+def message_info_and_render(request, message, template):
+    messages.info(request, message)
+    return render(request, template)
 
 def get_field_serialized(request, field):
     return str(request.POST.get(field)).strip()
