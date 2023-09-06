@@ -162,10 +162,9 @@ CACHES = {
     'default': {
         'BACKEND': os.getenv('BACKEND_CACHE'),
         'LOCATION': os.getenv('LOCATION_CACHE_SERVER'),
+        'TIMEOUT': 300,
     }
 }
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALLIAS = 'default'
-
-CACHE_TTS = 60
