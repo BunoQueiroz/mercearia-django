@@ -4,6 +4,8 @@ from core.views.utils import message_success_and_redirect, get_client_authentica
 from user.forms import LoginForm
 
 def login(request):
+    if request.user.is_authenticated:
+        return login_client_or_404(request)
     form = LoginForm()
     return render(request, 'user/login.html', {'form': form})
 
