@@ -2,10 +2,16 @@
 
 {% block title %}{{ product.name }}{% endblock title %}
 
+{% load static %}
+
 {% block content %}
     <section class="container my-2">
         <div class="row justify-content-between">
-            <img class="col-12 col-sm-6 my-3" src="{{ product.image.url }}" alt="{{ product.description }}">
+            {% if product.image %}
+                <img class="col-12 col-sm-6 my-3" src="{{ product.image.url }}" alt="{{ product.description }}">
+            {% else %}
+                <img class="col-12 col-sm-6 my-3" src="{% static 'img/logo.jpg' %}" alt="{{ product.description }}">
+            {% endif %}
             <div class="col-12 col-sm-5 d-flex flex-column justify-content-around">
                 <h4 class="text-center fs-2">{{ product.name }}</h4>
                 <p class="text-justify px-3 fs-4 fw-normal">{{ product.description }}</p>
