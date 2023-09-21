@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import auth
 from core.views.utils import message_success_and_redirect, get_client_authenticated
 from user.forms import LoginForm
 
 def login(request):
     if request.user.is_authenticated:
-        return login_client_or_404(request)
+        return redirect('dashboard')
     form = LoginForm()
     return render(request, 'user/login.html', {'form': form})
 
