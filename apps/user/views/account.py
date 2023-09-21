@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_list_or_404
 from user.models import Purchase, Account
-from core.views.utils import message_info_and_redirect
 from django.contrib import messages
 
 def my_account(request):
@@ -18,10 +17,8 @@ def render_client_purchase(request, client_purchase):
 
 def my_account_or_404(request):
     account = get_list_or_404(Account, client=request.user)[0]
-    if account:
-        client_purchase = Purchase.objects.filter(account=account)
-        return render_client_purchase(request, client_purchase)
-    message_info_and_redirect(request, 'Você ainda não possui conta', 'dashboard')
+    client_purchase = Purchase.objects.filter(account=account)
+    return render_client_purchase(request, client_purchase)
 
 def final_value(client_purchase):
     result = 0
