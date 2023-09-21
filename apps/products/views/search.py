@@ -3,7 +3,7 @@ from products.models import Product
 from core.views.utils import get_search_field_serialized, message_error_and_redirect
 
 def search(request):
-    if 'search' in request.GET:
+    if 'search' in request.GET and request.user.is_authenticated:
         return result_or_none(request)
     return redirect('home')
 
