@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "manage.py",
+      "src": "gunicron",
       "use": "@vercel/python",
       "config": {
         "runtime": "python3.9"
@@ -13,5 +13,5 @@
       "src": "/(.*)",
       "dest": "setup/wsgi.py"
     }
-  ],
+  ]
 }
