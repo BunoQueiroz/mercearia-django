@@ -14,9 +14,4 @@
       "dest": "setup/wsgi.py"
     }
   ],
-  "functions": {
-    "api": {
-      "handler": "vercel_django.handler",
-    }
-  },
 }
