@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get install postgresql-dev gcc musl-dev
+
 pip install --upgrade pip
 # Instalar as dependências Python
 pip install -r requirements.txt
