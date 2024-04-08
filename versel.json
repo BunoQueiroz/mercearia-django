@@ -1,5 +1,11 @@
 {
   "version": 2,
+  "functions": {
+    "api": {
+      "handler": "vercel_django.handler",
+      "runtime": "vercel-python@0.26.0"
+    }
+  },
   "builds": [
     {
       "src": "manage.py",
