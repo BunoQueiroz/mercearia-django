@@ -1,7 +1,6 @@
 {
   "version": 2,
   "builds": [
-    {"src": "build.sh", "use": "@vercel/builders-helpers/run"},
     {"src": "manage.py", "use": "@vercel/python"}
   ],
   "routes": [
