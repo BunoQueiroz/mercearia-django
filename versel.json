@@ -1,18 +1,19 @@
 {
   "version": 2,
+  "builds": [
+    { "src": "manage.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/" }
+  ],
   "functions": {
     "api": {
       "runtime": "python3.9",
-      "memory": 1024,
-      "maxDuration": 30,
       "includeFiles": "manage.py",
+      "environment": {
+        "DJANGO_SETTINGS_MODULE": "setup.settings"
+      },
       "shim": "@vercel/python-django"
     }
-  },
-  "builds": [
-    {
-      "src": "manage.py",
-      "use": "@vercel/django"
-    }
-  ],
+  }
 }
