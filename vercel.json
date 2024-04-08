@@ -1,8 +1,9 @@
 {
   "version": 2,
-  "functions": {
-    "api": {
-      "runtime": "python3.8",
-    }
-  }
+  "builds": [
+    { "src": "manage.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/" }
+  ]
 }
