@@ -1,7 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "manage.py", "use": "@vercel/python" }
+    { 
+      { "src": "build.sh", "use": "@vercel/builders-helpers/run" },
+      "src": "manage.py", "use": "@vercel/python" 
+    }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/" }
