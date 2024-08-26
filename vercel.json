@@ -5,6 +5,7 @@
       "src": "manage.py",
       "use": "@vercel/python",
       "config": {
+        "maxLambdaSize": "50mb",
         "runtime": "python3.9"
       }
     }
@@ -12,7 +13,19 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/manage.py"
+      "dest": "/gunicorn_cmd.sh"
     }
-  ]
+  ],
+  "env": {
+    "SECRET_KEY": "@django_secret_key54684",
+    "DEBUG": "True",
+    "ALLOWED_HOSTS": "mercearia-django.vercel.app",
+  },
+  "build": {
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "your_project_name.settings",
+      "DATABASE_URL": "@database_url"
+    }
+  },
+  "outputDirectory": "staticfiles"
 }
