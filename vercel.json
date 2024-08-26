@@ -17,14 +17,13 @@
     }
   ],
   "env": {
-    "SECRET_KEY": "@django_secret_key54684",
+    "SECRET_KEY": "@django_secret_key654654",
     "DEBUG": "True",
     "ALLOWED_HOSTS": "mercearia-django.vercel.app",
   },
   "build": {
     "env": {
-      "DJANGO_SETTINGS_MODULE": "your_project_name.settings",
-      "DATABASE_URL": "@database_url"
+      "DJANGO_SETTINGS_MODULE": "setup.settings",
     }
   },
   "outputDirectory": "staticfiles"
