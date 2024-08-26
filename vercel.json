@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "python3 manage.py runserver"
+      "dest": "python3 manage.py runserver 0.0.0.0:$PORT"
     }
   ]
 }
