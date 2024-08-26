@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "gunicorn_cmd.sh",
+      "src": "manage.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "50mb",
@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "./gunicorn_cmd.sh"
+      "dest": "/manage.py"
     }
   ]
 }
