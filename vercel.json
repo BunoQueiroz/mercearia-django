@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/gunicorn_cmd.sh"
+      "dest": "./gunicorn_cmd.sh"
     }
   ]
 }
