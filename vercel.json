@@ -4,6 +4,9 @@
     {
       "src": "manage.py",
       "use": "@vercel/python",
+    },
+    "config": {
+      "runtime": "python3.12"
     }
   ],
   "routes": [
