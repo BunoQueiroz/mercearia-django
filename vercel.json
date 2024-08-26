@@ -15,15 +15,5 @@
       "src": "/(.*)",
       "dest": "/gunicorn_cmd.sh"
     }
-  ],
-  "env": {
-    "SECRET_KEY": "@django_secret_key654654",
-    "DEBUG": "True",
-    "ALLOWED_HOSTS": "mercearia-django.vercel.app",
-  },
-  "build": {
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "setup.settings",
-    }
-  },
+  ]
 }
