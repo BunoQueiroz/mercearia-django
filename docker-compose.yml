@@ -1,0 +1,17 @@
+services:
+
+    application1:
+        container_name: application-1
+        build: .
+        restart: always
+        environment:
+            - POSTGRES_PASSWORD
+            - POSTGRES_USER
+            - POSTGRES_DB
+            - DEBUG
+            - SECRET_KEY
+            - HOST
+            - PORT
+            - MAX_TIME_SESSION
+        ports:
+            - "8000:8000"
