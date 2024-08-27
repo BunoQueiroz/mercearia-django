@@ -19,7 +19,7 @@
       "dest": "/static/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "^(?!/static/).*$",
       "dest": "setup/wsgi.py"
     }
   ]
